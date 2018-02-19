@@ -17,34 +17,40 @@
 	<button id="displayTodosButton">Display Todos</button>
 	<button id="toggleAllbutton">Toggle All</button>
 
+	<button onclick="handlers.displayTodos()">Display Todos</button>
+	<button onclick="handlers.toggleAll()">Toggle All</button>
 
 
 	<!--  -->
 
 	<script>
-		var displayTodosButton = document.getElementById('displayTodosButton');
+		// var displayTodosButton = document.getElementById('displayTodosButton');
 
-		var toggleAllbutton = document.getElementById('toggleAllbutton');
+		// var toggleAllbutton = document.getElementById('toggleAllbutton');
+
+		var handlers = {
+			displayTodos: function () {
+				todolist.displayTodos();
+			},
+			toggleAll: function () {
+				todolist.toggleAll();
+			}
+		}; 
+
+		// toggleAllbutton.addEventListener('click', function () {
+		// 	todolist.toggleAll();
+		// });
+
+		// displayTodosButton.addEventListener('click', function () {
+		// 	todolist.displayTodos();
+		// });
 
 
-toggleAllbutton.addEventListener('click',function(){
-	todolist.toggleAll();
-});
 
-
-
-
-
-
-		console.log(displayTodosButton);
-		displayTodosButton.addEventListener('click', function () {
-			todolist.displayTodos();
-		});
 
 		var todolist = {
 			todos: [],
 			displayTodos: function () {
-				debugger;
 				if (this.todos.length === 0) {
 					console.log('your todo list is Empty');
 				} else {
@@ -63,6 +69,7 @@ toggleAllbutton.addEventListener('click',function(){
 
 			},
 			addTodo: function (todoText) {
+				debugger;
 				this.todos.push({
 					todoText: todoText,
 					completed: false
@@ -110,7 +117,8 @@ toggleAllbutton.addEventListener('click',function(){
 				}
 				this.displayTodos();
 			}
-		}
+		};
+
 	</script>
 </body>
 
