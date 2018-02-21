@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +8,34 @@
 	<title>Document</title>
 
 </head>
-<!--  -->
+<!-- ----------------------------------------------- -->
 
 <body>
 	<h1>Hello</h1>
-	<button id="displayTodosButton">Display Todos</button>
-	<button id="toggleAllbutton">Toggle All</button>
+	<div>
+		<button onclick="handlers.displayTodos()">Display Todos</button>
+		<button onclick="handlers.toggleAll()">Toggle All</button>
+	</div>
+	<div>
+		<button onclick="handlers.addTodo()">Add</button>
+		<input id="addTodoTextInput" type="text">
+	</div>
 
-	<button onclick="handlers.displayTodos()">Display Todos</button>
-	<button onclick="handlers.toggleAll()">Toggle All</button>
+	<div>
+		<button onclick="handlers.changeTodo()"> Change Todo</button>
+		<input id="changeTodoPositionInput" type="number">
+		<input id="changeTodoTextInput" type="text">
 
-
-	<!--  -->
+	</div>
+	<div>
+		<button onclick="handlers.deleteToDo()">Delete</button>
+		<input id="deleteTodoPositionInput" type="number">
+	</div>
+	<div>
+		<button onclick="handlers.toggleCompleted()">Toggle completed</button>
+		<input id="toggleCompletedPositionInput" type="number">
+	</div>
+	<!----------------------------------------  -->
 
 	<script>
 		// var displayTodosButton = document.getElementById('displayTodosButton');
@@ -32,10 +46,38 @@
 			displayTodos: function () {
 				todolist.displayTodos();
 			},
+
 			toggleAll: function () {
 				todolist.toggleAll();
+			},
+
+			addTodo: function () {
+				var addTodoTextInput = document.getElementById('addTodoTextInput');
+				todolist.addTodo(addTodoTextInput.value);
+				addTodoTextInput.value = '';
+			},
+
+			changeTodo: function () {
+				var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+				var changeTodoTe0xtInput = document.getElementById('changeTodoTextInput');
+				todolist.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+				changeTodoPositionInput.value = '';
+				changeTodoTextInput.value = '';
+			},
+
+			deleteToDo: function () {
+				var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
+				todolist.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+				deleteTodoPositionInput.value = '';
+			},
+
+			toggleCompleted: function () {
+				var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+				debugger;
+				todolist.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+				toggleCompletedPositionInput.value = '';
 			}
-		}; 
+		};
 
 		// toggleAllbutton.addEventListener('click', function () {
 		// 	todolist.toggleAll();
@@ -45,31 +87,27 @@
 		// 	todolist.displayTodos();
 		// });
 
-
-
-
 		var todolist = {
+
 			todos: [],
+
 			displayTodos: function () {
 				if (this.todos.length === 0) {
-					console.log('your todo list is Empty');
+					console.log('Your Todo list is Empty');
 				} else {
 					console.log('My Todos:');
 					for (let i = 0; i < this.todos.length; i++) {
-						console.log(this.todos[i].todoText);
+						// console.log(this.todos[i].todoText);
 						if (this.todos[i].completed === true) {
 							console.log('(x)', this.todos[i].todoText);
 						} else {
 							console.log('( )', this.todos[i].todoText);
-						}
+						  }
 
 					}
 				}
-
-
 			},
 			addTodo: function (todoText) {
-				debugger;
 				this.todos.push({
 					todoText: todoText,
 					completed: false
@@ -82,23 +120,21 @@
 				this.todos[position].todoText = todoText;
 				this.displayTodos();
 			},
+
 			deleteTodo: function (position) {
 				this.todos.splice(position, 1);
 				this.displayTodos();
 			},
-			toogleCompleted: function (position) {
 
+			toggleCompleted: function (position) {
 				var todo = this.todos[position];
 				todo.completed = !todo.completed;
 				this.displayTodos();
 			},
 
-
-
 			toggleAll: function () {
 				var totalTodos = this.todos.length;
 				var completedTodos = 0;
-
 				for (let i = 0; i < totalTodos; i++) {
 					if (this.todos[i].completed === true) {
 						completedTodos++;
@@ -115,16 +151,10 @@
 					}
 
 				}
-				this.displayTodos();
 			}
 		};
-
+		
 	</script>
 </body>
-
-
-
-
-
 
 </html>
