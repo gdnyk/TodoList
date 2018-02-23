@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 
 <head>
@@ -9,6 +9,7 @@
 
 </head>
 <!-- ----------------------------------------------- -->
+
 
 <body>
 	<h1>Hello</h1>
@@ -35,12 +36,19 @@
 		<button onclick="handlers.toggleCompleted()">Toggle completed</button>
 		<input id="toggleCompletedPositionInput" type="number">
 	</div>
+
+	<div><ul></ul></div>
 	<!----------------------------------------  -->
 
 	<script>
 		// var displayTodosButton = document.getElementById('displayTodosButton');
 
 		// var toggleAllbutton = document.getElementById('toggleAllbutton');
+
+
+
+
+
 
 		var handlers = {
 			displayTodos: function () {
@@ -73,12 +81,22 @@
 
 			toggleCompleted: function () {
 				var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
-				debugger;
 				todolist.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
 				toggleCompletedPositionInput.value = '';
 			}
 		};
 
+		var view = {
+			displayTodos: function(){
+				var todosUl = document.querySelector('ul');
+					todosUl.innerHTML = '';
+
+				 for (let index = 0; index < todolist.todos.length; index++){
+				var todoLi = document.createElement('li');
+				todoLi.textContent = todolist.todos[index].todoText;
+				todosUl.appendChild(todoLi);}
+				 }
+		};
 		// toggleAllbutton.addEventListener('click', function () {
 		// 	todolist.toggleAll();
 		// });
@@ -87,7 +105,7 @@
 		// 	todolist.displayTodos();
 		// });
 
-		var todolist = {
+                    var todolist = {
 
 			todos: [],
 
@@ -102,7 +120,7 @@
 							console.log('(x)', this.todos[i].todoText);
 						} else {
 							console.log('( )', this.todos[i].todoText);
-						  }
+						}
 
 					}
 				}
@@ -153,7 +171,6 @@
 				}
 			}
 		};
-		
 	</script>
 </body>
 
