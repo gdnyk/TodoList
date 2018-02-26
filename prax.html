@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Document<2/title>
 
 </head>
 <!-- ----------------------------------------------- -->
@@ -205,23 +205,25 @@ if (elementClicked.className === 'deleteButton'){
 			toggleAll: function () {
 				var totalTodos = this.todos.length;
 				var completedTodos = 0;
-				for (let i = 0; i < totalTodos; i++) {
-					if (this.todos[i].completed === true) {
-						completedTodos++;
-					}
-					if (completedTodos === totalTodos) {
-						for (let i = 0; i < totalTodos; i++) {
-							this.todos[i].completed = false;
-						}
-					} else {
-						for (let i = 0; i < totalTodos; i++) {
+			// 	for (let i = 0; i < totalTodos; i++) {
+			// 		if (this.todos[i].completed === true) {
+			// 			completedTodos++;
+			// 		}
+			// 		if (completedTodos === totalTodos) {
+			// 			for (let i = 0; i < totalTodos; i++) {
+			// 				this.todos[i].completed = false;
+			// 			}
+			// 		} else {
+			// 			for (let i = 0; i < totalTodos; i++) {
 
-							this.todos[i].completed = true;
-						}
-					}
+			// 				this.todos[i].completed = true;
+			// 			}
+			// 		}
 
-				}
-			}
+			// 	}
+			// }
+
+			
 		};
 
 		view.setupEventListners();
