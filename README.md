@@ -1,2 +1,2 @@
 # TodoList
- Basically created by practising JS
+ Basically created for practising JS
